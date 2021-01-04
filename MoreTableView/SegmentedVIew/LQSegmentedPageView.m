@@ -6,22 +6,22 @@
 //
 
 // import分组次序：Frameworks、Services、UI
-#import "ESCBaseSegmentedPageView.h"
-#import "BSTableView.h"
-#import "ESCBaseSegmentedSingleViewController.h"
+#import "LQSegmentedPageView.h"
+#import "LQSegmentedTableView.h"
+#import "UIViewController+LQSegmented.h"
 #pragma mark - @class
 
 #pragma mark - 常量
 
 #pragma mark - 枚举
 
-@interface ESCBaseSegmentedPageView ()<UITableViewDelegate,UITableViewDataSource,SegmentedPageViewDelegate>
+@interface LQSegmentedPageView ()<UITableViewDelegate,UITableViewDataSource>
 
 #pragma mark - 私有属性
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 // 将其移动到interface中
-@property (nonatomic, strong) BSTableView *tableView;
+@property (nonatomic, strong) LQSegmentedTableView *tableView;
 
 @property (nonatomic, assign) BOOL canScroll;
 @property (nonatomic, assign) CGFloat position;
@@ -32,10 +32,11 @@
 
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UIView *sectionView;
+@property (nonatomic, strong) NSMutableArray *scrollviewsArr;
 
 @end
 
-@implementation ESCBaseSegmentedPageView
+@implementation LQSegmentedPageView
 
 #pragma mark - Life cycle
 
@@ -47,6 +48,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.scrollviewsArr = [NSMutableArray array];
         self.canScroll = YES;
         self.headerView = headerView;
         self.sectionView = sectionView;
@@ -98,16 +100,22 @@
 
 - (void)setViewControllers:(NSArray *)viewControllers {
     _viewControllers = viewControllers;
-    [_viewControllers enumerateObjectsUsingBlock:^(ESCBaseSegmentedSingleViewController * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.segmentedDelegate = self;
+    [_viewControllers enumerateObjectsUsingBlock:^(UIViewController * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        __weak typeof(self) weakSelf = self;
+        obj.segmentedBlock = ^(UIScrollView * _Nonnull scrollview) {
+            if (![self.scrollviewsArr containsObject:scrollview]) {
+                [self.scrollviewsArr addObject:scrollview];
+            }
+            [weakSelf scrollViewDidScroll:scrollview];
+        };
         obj.view.frame = CGRectMake(self.frame.size.width * idx, 0, self.frame.size.width, [self cellHeight]);
         [self.scrollView addSubview:obj.view];
     }];
 }
 
-- (BSTableView *)tableView {
+- (LQSegmentedTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[BSTableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
+        _tableView = [[LQSegmentedTableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor yellowColor];
@@ -148,11 +156,8 @@
 }
 
 
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat bottomCellOffset = self.headerView.frame.size.height;
-    
-    
     if (scrollView == self.tableView) {
         if (self.canScroll) {
             CGFloat y = self.tableView.contentOffset.y;
@@ -165,6 +170,7 @@
                 self.subCanScroll = YES;
             } else {
                 self.subCanScroll = NO;
+                
             }
             
         } else {
@@ -190,7 +196,9 @@
                     self.tableView.contentOffset = CGPointMake(0, 0);
                 }
             } else {
-                scrollView.contentOffset = CGPointMake(0, 0);
+                [self.scrollviewsArr enumerateObjectsUsingBlock:^(UIScrollView *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    obj.contentOffset = CGPointMake(0, 0);
+                }];
             }
         }
         self.lastContentOffset = scrollView.contentOffset.y;

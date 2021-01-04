@@ -34,16 +34,18 @@
     self.tableView.delegate  = self;
     self.tableView.dataSource = self;
     self.view.backgroundColor = [UIColor redColor];
-//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self.tableView.mj_header endRefreshing];
-//        });
-//        NSLog(@"1");
-//    }];
-//    self.tableView.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
-//        NSLog(@"1");
-//    }];
-//    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.tableView.mj_header endRefreshing];
+        });
+        NSLog(@"1");
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.tableView.mj_footer endRefreshing];
+        });
+    }];
+    
 }
 
 
@@ -101,9 +103,5 @@
 }
 
 #pragma mark - Getters and Setters
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.segmentedDelegate scrollViewDidScroll:scrollView];
-}
 
 @end

@@ -7,13 +7,11 @@
 
 #import "ViewController.h"
 #import "UIViewExt.h"
-#import "BSTableView.h"
-#import "BSScrollView.h"
-#import "ESCBaseSegmentedPageView.h"
+#import "LQSegmentedPageView.h"
 #import "FirstTableViewController.h"
 @interface ViewController ()
 
-@property (nonatomic, strong) ESCBaseSegmentedPageView *segmentedPageView;
+@property (nonatomic, strong) LQSegmentedPageView *segmentedPageView;
 
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UIView *sectionView;
@@ -40,7 +38,7 @@
 
 #pragma mark - UITableViewDataSource
 
-- (ESCBaseSegmentedPageView *)segmentedPageView {
+- (LQSegmentedPageView *)segmentedPageView {
     if (!_segmentedPageView) {
         
         NSMutableArray *arr = [NSMutableArray array];
@@ -49,7 +47,7 @@
         [arr addObject:vc1];
         [arr addObject:vc2];
         
-        _segmentedPageView = [[ESCBaseSegmentedPageView alloc] initWithFrame:CGRectMake(0, 40, 414, 700) headerView:self.headerView sectionView:self.sectionView titleArr:@[@"全部",@"特惠"] viewControllers:arr];
+        _segmentedPageView = [[LQSegmentedPageView alloc] initWithFrame:CGRectMake(0, 40, 414, 700) headerView:self.headerView sectionView:self.sectionView titleArr:@[@"全部",@"特惠"] viewControllers:arr];
         
     }
     return _segmentedPageView;

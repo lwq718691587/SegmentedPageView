@@ -1,19 +1,16 @@
 //
-//  BSTableView.m
-//  testScrollView
+//  LQSegmentedTableView.m
+//  MoreTableView
 //
-//  Created by 一枫 on 2018/12/19.
-//  Copyright © 2018 SQBJ. All rights reserved.
+//  Created by 刘伟强 on 2021/1/4.
 //
 
-#import "BSTableView.h"
+#import "LQSegmentedTableView.h"
 
-@implementation BSTableView
+@implementation LQSegmentedTableView
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     return YES;
 }
-
-
 
 @end

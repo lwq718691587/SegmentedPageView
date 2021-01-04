@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4145231854A036F90BCD167D /* libPods-MoreTableView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C83F315D03AA140652C9F97 /* libPods-MoreTableView.a */; };
+		FC368E3D25A3030700F8E2F5 /* LQSegmentedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368E3C25A3030700F8E2F5 /* LQSegmentedTableView.m */; };
+		FC368E5825A3051100F8E2F5 /* UIViewController+LQSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368E5725A3051100F8E2F5 /* UIViewController+LQSegmented.m */; };
+		FC368E6A25A3181E00F8E2F5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368E6825A3181E00F8E2F5 /* SceneDelegate.m */; };
 		FC36D1862599DC7C00FC1136 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D1852599DC7C00FC1136 /* AppDelegate.m */; };
-		FC36D1892599DC7C00FC1136 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D1882599DC7C00FC1136 /* SceneDelegate.m */; };
 		FC36D18C2599DC7C00FC1136 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D18B2599DC7C00FC1136 /* ViewController.m */; };
 		FC36D18F2599DC7C00FC1136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC36D18D2599DC7C00FC1136 /* Main.storyboard */; };
 		FC36D1912599DC7F00FC1136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC36D1902599DC7F00FC1136 /* Assets.xcassets */; };
@@ -18,12 +20,9 @@
 		FC36D1A12599DC7F00FC1136 /* MoreTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D1A02599DC7F00FC1136 /* MoreTableViewTests.m */; };
 		FC36D1AC2599DC7F00FC1136 /* MoreTableViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D1AB2599DC7F00FC1136 /* MoreTableViewUITests.m */; };
 		FC36D1C32599DF3700FC1136 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D1C22599DF3700FC1136 /* UIViewExt.m */; };
-		FC36D1CA259ABEDE00FC1136 /* BSScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D1C8259ABEDE00FC1136 /* BSScrollView.m */; };
-		FC36D1D0259ABF0500FC1136 /* BSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D1CF259ABF0500FC1136 /* BSTableView.m */; };
 		FC36D209259C5F9900FC1136 /* FirstTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D208259C5F9900FC1136 /* FirstTableViewController.m */; };
 		FC36D20F259C5FA700FC1136 /* SecondTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D20E259C5FA700FC1136 /* SecondTableViewController.m */; };
-		FC36D215259C5FF100FC1136 /* ESCBaseSegmentedPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D214259C5FF100FC1136 /* ESCBaseSegmentedPageView.m */; };
-		FC9F6BF0259C882200B9378E /* ESCBaseSegmentedSingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F6BEF259C882200B9378E /* ESCBaseSegmentedSingleViewController.m */; };
+		FC36D215259C5FF100FC1136 /* LQSegmentedPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D214259C5FF100FC1136 /* LQSegmentedPageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,11 +46,15 @@
 		53CD2D8656CE98CB24308B45 /* Pods-MoreTableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoreTableView.debug.xcconfig"; path = "Target Support Files/Pods-MoreTableView/Pods-MoreTableView.debug.xcconfig"; sourceTree = "<group>"; };
 		6C83F315D03AA140652C9F97 /* libPods-MoreTableView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoreTableView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		977DC0486F72964553C189F0 /* Pods-MoreTableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoreTableView.release.xcconfig"; path = "Target Support Files/Pods-MoreTableView/Pods-MoreTableView.release.xcconfig"; sourceTree = "<group>"; };
+		FC368E3B25A3030700F8E2F5 /* LQSegmentedTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQSegmentedTableView.h; sourceTree = "<group>"; };
+		FC368E3C25A3030700F8E2F5 /* LQSegmentedTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQSegmentedTableView.m; sourceTree = "<group>"; };
+		FC368E5625A3051100F8E2F5 /* UIViewController+LQSegmented.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LQSegmented.h"; sourceTree = "<group>"; };
+		FC368E5725A3051100F8E2F5 /* UIViewController+LQSegmented.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LQSegmented.m"; sourceTree = "<group>"; };
+		FC368E6825A3181E00F8E2F5 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		FC368E6925A3181E00F8E2F5 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		FC36D1812599DC7C00FC1136 /* MoreTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoreTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC36D1842599DC7C00FC1136 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC36D1852599DC7C00FC1136 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FC36D1872599DC7C00FC1136 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		FC36D1882599DC7C00FC1136 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		FC36D18A2599DC7C00FC1136 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FC36D18B2599DC7C00FC1136 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FC36D18E2599DC7C00FC1136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,18 +70,12 @@
 		FC36D1AD2599DC7F00FC1136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC36D1C12599DF3700FC1136 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		FC36D1C22599DF3700FC1136 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
-		FC36D1C8259ABEDE00FC1136 /* BSScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSScrollView.m; sourceTree = "<group>"; };
-		FC36D1C9259ABEDE00FC1136 /* BSScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSScrollView.h; sourceTree = "<group>"; };
-		FC36D1CE259ABF0500FC1136 /* BSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTableView.h; sourceTree = "<group>"; };
-		FC36D1CF259ABF0500FC1136 /* BSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTableView.m; sourceTree = "<group>"; };
 		FC36D207259C5F9900FC1136 /* FirstTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTableViewController.h; sourceTree = "<group>"; };
 		FC36D208259C5F9900FC1136 /* FirstTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewController.m; sourceTree = "<group>"; };
 		FC36D20D259C5FA700FC1136 /* SecondTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondTableViewController.h; sourceTree = "<group>"; };
 		FC36D20E259C5FA700FC1136 /* SecondTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondTableViewController.m; sourceTree = "<group>"; };
-		FC36D213259C5FF100FC1136 /* ESCBaseSegmentedPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESCBaseSegmentedPageView.h; sourceTree = "<group>"; };
-		FC36D214259C5FF100FC1136 /* ESCBaseSegmentedPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESCBaseSegmentedPageView.m; sourceTree = "<group>"; };
-		FC9F6BEE259C882200B9378E /* ESCBaseSegmentedSingleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESCBaseSegmentedSingleViewController.h; sourceTree = "<group>"; };
-		FC9F6BEF259C882200B9378E /* ESCBaseSegmentedSingleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESCBaseSegmentedSingleViewController.m; sourceTree = "<group>"; };
+		FC36D213259C5FF100FC1136 /* LQSegmentedPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQSegmentedPageView.h; sourceTree = "<group>"; };
+		FC36D214259C5FF100FC1136 /* LQSegmentedPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQSegmentedPageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +121,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FC368E3A25A3029E00F8E2F5 /* SegmentedVIew */ = {
+			isa = PBXGroup;
+			children = (
+				FC368E3B25A3030700F8E2F5 /* LQSegmentedTableView.h */,
+				FC368E3C25A3030700F8E2F5 /* LQSegmentedTableView.m */,
+				FC36D213259C5FF100FC1136 /* LQSegmentedPageView.h */,
+				FC36D214259C5FF100FC1136 /* LQSegmentedPageView.m */,
+				FC368E5625A3051100F8E2F5 /* UIViewController+LQSegmented.h */,
+				FC368E5725A3051100F8E2F5 /* UIViewController+LQSegmented.m */,
+			);
+			path = SegmentedVIew;
+			sourceTree = "<group>";
+		};
 		FC36D1782599DC7C00FC1136 = {
 			isa = PBXGroup;
 			children = (
@@ -149,22 +159,15 @@
 		FC36D1832599DC7C00FC1136 /* MoreTableView */ = {
 			isa = PBXGroup;
 			children = (
+				FC368E3A25A3029E00F8E2F5 /* SegmentedVIew */,
 				FC36D1C12599DF3700FC1136 /* UIViewExt.h */,
 				FC36D1C22599DF3700FC1136 /* UIViewExt.m */,
 				FC36D1842599DC7C00FC1136 /* AppDelegate.h */,
 				FC36D1852599DC7C00FC1136 /* AppDelegate.m */,
-				FC36D1872599DC7C00FC1136 /* SceneDelegate.h */,
-				FC36D1882599DC7C00FC1136 /* SceneDelegate.m */,
 				FC36D18A2599DC7C00FC1136 /* ViewController.h */,
 				FC36D18B2599DC7C00FC1136 /* ViewController.m */,
-				FC36D1C9259ABEDE00FC1136 /* BSScrollView.h */,
-				FC36D1C8259ABEDE00FC1136 /* BSScrollView.m */,
-				FC36D1CE259ABF0500FC1136 /* BSTableView.h */,
-				FC36D1CF259ABF0500FC1136 /* BSTableView.m */,
-				FC36D213259C5FF100FC1136 /* ESCBaseSegmentedPageView.h */,
-				FC36D214259C5FF100FC1136 /* ESCBaseSegmentedPageView.m */,
-				FC9F6BEE259C882200B9378E /* ESCBaseSegmentedSingleViewController.h */,
-				FC9F6BEF259C882200B9378E /* ESCBaseSegmentedSingleViewController.m */,
+				FC368E6925A3181E00F8E2F5 /* SceneDelegate.h */,
+				FC368E6825A3181E00F8E2F5 /* SceneDelegate.m */,
 				FC36D207259C5F9900FC1136 /* FirstTableViewController.h */,
 				FC36D208259C5F9900FC1136 /* FirstTableViewController.m */,
 				FC36D20D259C5FA700FC1136 /* SecondTableViewController.h */,
@@ -371,14 +374,13 @@
 			files = (
 				FC36D18C2599DC7C00FC1136 /* ViewController.m in Sources */,
 				FC36D1862599DC7C00FC1136 /* AppDelegate.m in Sources */,
-				FC36D1CA259ABEDE00FC1136 /* BSScrollView.m in Sources */,
-				FC9F6BF0259C882200B9378E /* ESCBaseSegmentedSingleViewController.m in Sources */,
+				FC368E5825A3051100F8E2F5 /* UIViewController+LQSegmented.m in Sources */,
 				FC36D1C32599DF3700FC1136 /* UIViewExt.m in Sources */,
 				FC36D209259C5F9900FC1136 /* FirstTableViewController.m in Sources */,
 				FC36D1972599DC7F00FC1136 /* main.m in Sources */,
-				FC36D215259C5FF100FC1136 /* ESCBaseSegmentedPageView.m in Sources */,
-				FC36D1D0259ABF0500FC1136 /* BSTableView.m in Sources */,
-				FC36D1892599DC7C00FC1136 /* SceneDelegate.m in Sources */,
+				FC36D215259C5FF100FC1136 /* LQSegmentedPageView.m in Sources */,
+				FC368E6A25A3181E00F8E2F5 /* SceneDelegate.m in Sources */,
+				FC368E3D25A3030700F8E2F5 /* LQSegmentedTableView.m in Sources */,
 				FC36D20F259C5FA700FC1136 /* SecondTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

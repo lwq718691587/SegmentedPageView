@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
  * <#类注释，说明类的功能#>
  * @note <#额外说明的注意项，说明一些需要注意的地方，没有可取消此项。#>
  */
-@interface ESCBaseSegmentedPageView : UIView
+@interface LQSegmentedPageView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame
                    headerView:(UIView *)headerView
