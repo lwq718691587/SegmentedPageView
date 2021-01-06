@@ -11,6 +11,8 @@
 		FC368E3D25A3030700F8E2F5 /* LQSegmentedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368E3C25A3030700F8E2F5 /* LQSegmentedTableView.m */; };
 		FC368E5825A3051100F8E2F5 /* UIViewController+LQSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368E5725A3051100F8E2F5 /* UIViewController+LQSegmented.m */; };
 		FC368E6A25A3181E00F8E2F5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368E6825A3181E00F8E2F5 /* SceneDelegate.m */; };
+		FC368E7425A43DAC00F8E2F5 /* LQSectionTitleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368E7325A43DAC00F8E2F5 /* LQSectionTitleCollectionViewCell.m */; };
+		FC368E8025A5666900F8E2F5 /* LQSegmentedCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368E7F25A5666900F8E2F5 /* LQSegmentedCategoryView.m */; };
 		FC36D1862599DC7C00FC1136 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D1852599DC7C00FC1136 /* AppDelegate.m */; };
 		FC36D18C2599DC7C00FC1136 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC36D18B2599DC7C00FC1136 /* ViewController.m */; };
 		FC36D18F2599DC7C00FC1136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC36D18D2599DC7C00FC1136 /* Main.storyboard */; };
@@ -52,6 +54,10 @@
 		FC368E5725A3051100F8E2F5 /* UIViewController+LQSegmented.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LQSegmented.m"; sourceTree = "<group>"; };
 		FC368E6825A3181E00F8E2F5 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		FC368E6925A3181E00F8E2F5 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		FC368E7225A43DAC00F8E2F5 /* LQSectionTitleCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQSectionTitleCollectionViewCell.h; sourceTree = "<group>"; };
+		FC368E7325A43DAC00F8E2F5 /* LQSectionTitleCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQSectionTitleCollectionViewCell.m; sourceTree = "<group>"; };
+		FC368E7E25A5666900F8E2F5 /* LQSegmentedCategoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQSegmentedCategoryView.h; sourceTree = "<group>"; };
+		FC368E7F25A5666900F8E2F5 /* LQSegmentedCategoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQSegmentedCategoryView.m; sourceTree = "<group>"; };
 		FC36D1812599DC7C00FC1136 /* MoreTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoreTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC36D1842599DC7C00FC1136 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC36D1852599DC7C00FC1136 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,8 +134,12 @@
 				FC368E3C25A3030700F8E2F5 /* LQSegmentedTableView.m */,
 				FC36D213259C5FF100FC1136 /* LQSegmentedPageView.h */,
 				FC36D214259C5FF100FC1136 /* LQSegmentedPageView.m */,
+				FC368E7E25A5666900F8E2F5 /* LQSegmentedCategoryView.h */,
+				FC368E7F25A5666900F8E2F5 /* LQSegmentedCategoryView.m */,
 				FC368E5625A3051100F8E2F5 /* UIViewController+LQSegmented.h */,
 				FC368E5725A3051100F8E2F5 /* UIViewController+LQSegmented.m */,
+				FC368E7225A43DAC00F8E2F5 /* LQSectionTitleCollectionViewCell.h */,
+				FC368E7325A43DAC00F8E2F5 /* LQSectionTitleCollectionViewCell.m */,
 			);
 			path = SegmentedVIew;
 			sourceTree = "<group>";
@@ -373,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC36D18C2599DC7C00FC1136 /* ViewController.m in Sources */,
+				FC368E7425A43DAC00F8E2F5 /* LQSectionTitleCollectionViewCell.m in Sources */,
 				FC36D1862599DC7C00FC1136 /* AppDelegate.m in Sources */,
 				FC368E5825A3051100F8E2F5 /* UIViewController+LQSegmented.m in Sources */,
 				FC36D1C32599DF3700FC1136 /* UIViewExt.m in Sources */,
@@ -381,6 +392,7 @@
 				FC36D215259C5FF100FC1136 /* LQSegmentedPageView.m in Sources */,
 				FC368E6A25A3181E00F8E2F5 /* SceneDelegate.m in Sources */,
 				FC368E3D25A3030700F8E2F5 /* LQSegmentedTableView.m in Sources */,
+				FC368E8025A5666900F8E2F5 /* LQSegmentedCategoryView.m in Sources */,
 				FC36D20F259C5FA700FC1136 /* SecondTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

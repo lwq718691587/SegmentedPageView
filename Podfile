@@ -4,5 +4,6 @@ inhibit_all_warnings!
 
 target 'MoreTableView' do
   pod 'MJRefresh', '~> 3.5.0'
+  pod 'Masonry'
 	  
 end

@@ -7,7 +7,7 @@
 
 // import分组次序：Frameworks、Services、UI
 #import <UIKit/UIKit.h>
-
+#import "LQSegmentedCategoryView.h"
 #pragma mark - @class
 
 #pragma mark - 常量
@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFrame:(CGRect)frame
                    headerView:(UIView *)headerView
-                  sectionView:(UIView *)sectionView
                      titleArr:(NSArray*)titleArr
               viewControllers:(NSArray *)viewControllers;
 

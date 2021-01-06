@@ -26,7 +26,7 @@
     float i = 4.f/2.f;
     NSLog(@"%f",i);
     NSLog(@"%d",(int)i);
-    
+
     [self.view addSubview:self.segmentedPageView];
     
     // Do any additional setup after loading the view.
@@ -42,12 +42,12 @@
     if (!_segmentedPageView) {
         
         NSMutableArray *arr = [NSMutableArray array];
-        FirstTableViewController *vc1 = [[FirstTableViewController alloc] init];
-        FirstTableViewController *vc2 = [[FirstTableViewController alloc] init];
-        [arr addObject:vc1];
-        [arr addObject:vc2];
+        for (int i = 0; i < 6; i ++) {
+            FirstTableViewController *vc1 = [[FirstTableViewController alloc] init];
+            [arr addObject:vc1];
+        }
         
-        _segmentedPageView = [[LQSegmentedPageView alloc] initWithFrame:CGRectMake(0, 40, 414, 700) headerView:self.headerView sectionView:self.sectionView titleArr:@[@"全部",@"特惠"] viewControllers:arr];
+        _segmentedPageView = [[LQSegmentedPageView alloc] initWithFrame:CGRectMake(0, 40, 414, 700) headerView:self.headerView titleArr:@[@"全部",@"特惠",@"全部特惠",@"特惠",@"全部特惠",@"特惠"] viewControllers:arr];
         
     }
     return _segmentedPageView;
