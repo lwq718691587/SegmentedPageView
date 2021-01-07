@@ -31,9 +31,9 @@
     return _cusTitleLabel;
 }
 
-- (void)setFont:(UIFont *)font {
-    _font = font;
-    self.cusTitleLabel.font = self.font;
+- (void)setNormalFont:(UIFont *)normalFont {
+    _normalFont = normalFont;
+    self.cusTitleLabel.font = _normalFont;
 }
 
 - (void)setTitle:(NSString *)title {
@@ -41,7 +41,16 @@
     self.cusTitleLabel.text = _title;
 }
 
-
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    if (selected) {
+        self.cusTitleLabel.font = self.selectedFont;
+        self.cusTitleLabel.textColor = self.selectedtTextColor;
+    } else {
+        self.cusTitleLabel.font = self.normalFont;
+        self.cusTitleLabel.textColor = self.normalTextColor;
+    }
+}
 
 
 @end

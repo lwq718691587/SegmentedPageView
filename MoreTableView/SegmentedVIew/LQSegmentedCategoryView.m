@@ -21,27 +21,16 @@
 @implementation LQSegmentedCategoryView
 
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.itemSpacing = 20;
+        self.normalTitleFont = [UIFont systemFontOfSize:15];
         self.currentIndex = 0;
         [self addSubview:self.collectionView];
         [self.collectionView addSubview:self.lineView];
-        
-        
     }
     return self;
-}
-
--(void)setTitleArr:(NSArray *)titleArr {
-    _titleArr = titleArr;
-    [self.collectionView reloadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.lineView.centerX = [self getCell:0].centerX;
-    });
-    
 }
 
 
@@ -73,7 +62,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LQSectionTitleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     cell.title = self.titleArr[indexPath.row];
-    cell.font = self.titleFont;
+    cell.normalFont = self.normalTitleFont;
+    cell.normalTextColor = self.normalTitleTextColor;
+    cell.selectedFont = self.selectedTitleFont;
+    cell.selectedtTextColor = self.selectedTitleTextColor;
+    
     return cell;
 }
 
@@ -85,6 +78,80 @@
         self.selectedIndex(indexPath.row);
     }
 }
+
+
+
+- (void)scrollStartIndex:(NSInteger)startIndex tagretIndex:(NSInteger)tagretIndex percent:(CGFloat)percent {
+    CGFloat startCenterX = [self getCell:startIndex].centerX;
+    LQSectionTitleCollectionViewCell *startCell = [self getCell:startIndex];
+    LQSectionTitleCollectionViewCell *endCell = [self getCell:tagretIndex];
+    self.lineView.centerX = startCenterX + ((endCell.centerX - startCell.centerX) * percent);
+    
+    if (percent == 1.0 || percent == 0) {
+        endCell.selected = YES;
+        self.currentIndex = tagretIndex;
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    } else {
+        startCell.selected = NO;
+    }
+
+}
+
+
+- (void)scrollToIndex:(NSInteger)index {
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+}
+
+- (LQSectionTitleCollectionViewCell *)getCell:(NSUInteger)index {
+    return (LQSectionTitleCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+}
+
+
+
+
+- (CGFloat)getWidthWithContent:(NSString *)content {
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(MAXFLOAT, self.height)
+                                        options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                     attributes:@{NSFontAttributeName:self.selectedTitleFont}
+                                        context:nil];
+    return ceilf(rect.size.width);
+}
+
+#pragma mark - set get
+
+- (void)setLineSize:(CGSize)lineSize {
+    _lineSize = lineSize;
+    self.lineView.size = lineSize;
+}
+
+- (void)setLineOffsetY:(CGFloat)lineOffsetY {
+    _lineOffsetY = lineOffsetY;
+    self.lineView.bottom = lineOffsetY;
+}
+
+- (void)setLineImage:(UIImage *)lineImage {
+    _lineImage = lineImage;
+    self.lineView.image = _lineImage;
+}
+
+
+-(void)setTitleArr:(NSArray *)titleArr {
+    _titleArr = titleArr;
+    [self.collectionView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.lineView.centerX = [self getCell:0].centerX;
+    });
+    
+}
+
+- (UIFont *)selectedTitleFont {
+    if (_selectedTitleFont) {
+        return  _selectedTitleFont;
+    } else {
+        return self.normalTitleFont;
+    }
+}
+
 
 - (UICollectionViewFlowLayout *)flowLayout {
     if (!_flowLayout) {
@@ -117,42 +184,5 @@ static NSString *const identify = @"LQSectionTitleCollectionViewCell";
     return _lineView;
 }
 
-- (void)scrollLineView:(CGFloat)position startIndex:(NSInteger)startIndex {
-    
-    self.lineView.centerX = [self getCell:0].centerX + position;
-}
-
-- (void)scrollToIndex:(NSInteger)index {
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-}
-
-- (UICollectionViewCell *)getCell:(NSUInteger)index {
-    return (UICollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-}
-
-- (CGFloat)getWidthBetweenStartIndex:(NSInteger )startIndex
-                            endIndex:(NSInteger)endIndex {
-    UICollectionViewCell *startCell = [self getCell:startIndex];
-    UICollectionViewCell *endCell = [self getCell:endIndex];
-    return endCell.centerX - startCell.centerX;
-    
-}
-
-- (UIFont *)selectedTitleFont {
-    if (_selectedTitleFont) {
-        return  _selectedTitleFont;
-    } else {
-        return self.titleFont;
-    }
-}
-
-
-- (CGFloat)getWidthWithContent:(NSString *)content {
-    CGRect rect = [content boundingRectWithSize:CGSizeMake(MAXFLOAT, self.height)
-                                        options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                     attributes:@{NSFontAttributeName:self.selectedTitleFont}
-                                        context:nil];
-    return ceilf(rect.size.width);
-}
 
 @end

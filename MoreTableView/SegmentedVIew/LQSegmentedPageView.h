@@ -22,7 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface LQSegmentedPageView : UIView
 
+/// 分类的空间 可以设置样式
+@property (nonatomic, strong, readonly) LQSegmentedCategoryView *segmentedCategoryView;
+
 - (instancetype)initWithFrame:(CGRect)frame
+           categoryViewHeight:(CGFloat)categoryViewHeight
                    headerView:(UIView *)headerView
                      titleArr:(NSArray*)titleArr
               viewControllers:(NSArray *)viewControllers;

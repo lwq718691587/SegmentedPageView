@@ -23,7 +23,6 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) LQSegmentedTableView *tableView;
-@property (nonatomic, strong) LQSegmentedCategoryView *segmentedCategoryView;
 @property (nonatomic, assign) BOOL canScroll;
 @property (nonatomic, assign) BOOL subCanScroll;
 @property (nonatomic, assign) CGFloat lastContentOffsetY;
@@ -32,7 +31,8 @@
 @property (nonatomic, strong) NSMutableArray *scrollviewsArr;
 @property (nonatomic, strong) NSArray *titleArr;
 @property (nonatomic, assign) NSInteger currentIndex;
-
+@property (nonatomic, strong) LQSegmentedCategoryView *segmentedCategoryView;
+@property (nonatomic, assign) CGFloat categoryViewHeight;
 @end
 
 @implementation LQSegmentedPageView
@@ -40,12 +40,14 @@
 #pragma mark - Life cycle
 
 - (instancetype)initWithFrame:(CGRect)frame
+           categoryViewHeight:(CGFloat)categoryViewHeight
                    headerView:(UIView *)headerView
                      titleArr:(NSArray*)titleArr
               viewControllers:(NSArray *)viewControllers
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.categoryViewHeight = categoryViewHeight;
         self.currentIndex = 0;
         self.scrollviewsArr = [NSMutableArray array];
         self.titleArr = titleArr;
@@ -119,6 +121,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor yellowColor];
+        _tableView.showsVerticalScrollIndicator = NO;
         //cell分割线的风格
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         if (self.headerView) {
@@ -142,11 +145,9 @@
         _scrollView.bounces = NO;
         _scrollView.directionalLockEnabled = YES;
         _scrollView.delegate = self;
-//        [_scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     }
     return _scrollView;
 }
-
 
 - (CGFloat)cellHeight {
     if (self.segmentedCategoryView) {
@@ -156,26 +157,10 @@
     }
 }
 
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"contentOffset"]) {
-        CGFloat value = [change[@"new"] CGPointValue].x - [change[@"old"] CGPointValue].x;
-        CGFloat betweenWidth = [self.segmentedCategoryView getWidthBetweenStartIndex:self.currentIndex endIndex:self.currentIndex + 1];
-//        [self.segmentedCategoryView scrollLineView:value * betweenWidth/self.frame.size.width];
-    }
-}
-
-
-
 - (LQSegmentedCategoryView *)segmentedCategoryView {
     if (!_segmentedCategoryView) {
-        _segmentedCategoryView = [[LQSegmentedCategoryView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 40)];
-        _segmentedCategoryView.backgroundColor = [UIColor blueColor];
+        _segmentedCategoryView = [[LQSegmentedCategoryView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.categoryViewHeight)];
         _segmentedCategoryView.titleArr = self.titleArr;
-        _segmentedCategoryView.titleFont = [UIFont systemFontOfSize:14];
-        _segmentedCategoryView.selectedTitleFont = [UIFont systemFontOfSize:14];
-//        _segmentedCategoryView.itemWidth = self.frame.size.width/self.titleArr.count;
-        _segmentedCategoryView.itemSpacing = 0;
         __weak typeof(self) weakSelf = self;
         _segmentedCategoryView.selectedIndex = ^(NSInteger index) {
             [weakSelf.scrollView setContentOffset:CGPointMake(self.frame.size.width * index, 0) animated:YES];
@@ -188,15 +173,25 @@
     return self.scrollView.contentOffset.x/self.frame.size.width;
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (scrollView == self.scrollView) {
-        [self.segmentedCategoryView scrollToIndex:self.currentIndex];
-    }
-}
-
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView != self.scrollView) {
+    if (scrollView == self.scrollView) {
+        CGFloat change = scrollView.contentOffset.x - self.lastContentOffsetX;
+        
+        CGFloat scale = scrollView.contentOffset.x / scrollView.frame.size.width;
+        NSInteger leftPage = floor(scale);
+        NSInteger rightPage = ceil(scale);
+        if (change > 0) {
+            //向右滑动
+            [self.segmentedCategoryView scrollStartIndex:leftPage tagretIndex:rightPage percent:scale-leftPage];
+            
+        } else {
+            //向左滑动
+            [self.segmentedCategoryView scrollStartIndex:rightPage tagretIndex:leftPage percent:1 - (scale - leftPage)];
+            
+        }
+        self.lastContentOffsetX = scrollView.contentOffset.x;
+
+    } else {
         CGFloat bottomCellOffset = self.headerView.frame.size.height;
         if (scrollView == self.tableView) {
             if (self.canScroll) {
@@ -242,12 +237,6 @@
             }
             self.lastContentOffsetY = scrollView.contentOffset.y;
         }
-    } else {
-        CGFloat betweenWidth = [self.segmentedCategoryView getWidthBetweenStartIndex:self.currentIndex endIndex:self.currentIndex + 1];
-//        CGFloat value = scrollView.contentOffset.x - self.lastContentOffsetX;
-        CGFloat value = scrollView.contentOffset.x * betweenWidth/self.frame.size.width;
-        [self.segmentedCategoryView scrollLineView:value startIndex:self.currentIndex];
-        self.lastContentOffsetX = scrollView.contentOffset.x;
     }
 }
 

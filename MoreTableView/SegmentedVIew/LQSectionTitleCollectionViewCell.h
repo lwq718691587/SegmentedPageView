@@ -12,10 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LQSectionTitleCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, strong) UIFont *font;
+@property (nonatomic, strong) UIFont *normalFont;
+@property (nonatomic, strong) UIColor *normalTextColor;
 @property (nonatomic, strong) UIFont *selectedFont;
-@property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIColor *selectedtTextColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

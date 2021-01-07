@@ -42,13 +42,11 @@
     if (!_segmentedPageView) {
         
         NSMutableArray *arr = [NSMutableArray array];
-        for (int i = 0; i < 6; i ++) {
+        for (int i = 0; i < 8; i ++) {
             FirstTableViewController *vc1 = [[FirstTableViewController alloc] init];
             [arr addObject:vc1];
         }
-        
-        _segmentedPageView = [[LQSegmentedPageView alloc] initWithFrame:CGRectMake(0, 40, 414, 700) headerView:self.headerView titleArr:@[@"全部",@"特惠",@"全部特惠",@"特惠",@"全部特惠",@"特惠"] viewControllers:arr];
-        
+        _segmentedPageView = [[LQSegmentedPageView alloc] initWithFrame:CGRectMake(0, 40, 414, 700) categoryViewHeight:40 headerView:self.headerView titleArr:@[@"全部",@"特",@"全部特惠",@"特惠看来大家发可",@"全部特惠",@"特惠",@"全部特惠",@"特惠",] viewControllers:arr];
     }
     return _segmentedPageView;
 }
